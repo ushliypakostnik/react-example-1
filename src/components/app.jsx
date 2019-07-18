@@ -24,7 +24,6 @@ const PageWrapper = styled.div`
 `
 const ImageWrapper = styled.div`
   display: flex;
-  height: calc(100% - ${GUIDELINE.progressHeight});
   align-items: center;
   justify-content: center;
   overflow: hidden;
@@ -62,7 +61,7 @@ class App extends Component {
         this.setState({ stop: true });
         clearTimeout(this.interval1);
       } else {
-        this.setState({ progress: ++this.state.progress });
+        this.setState({ progress: this.state.progress + 1 });
       }
     }, GUIDELINE.animationSpeed);
   }

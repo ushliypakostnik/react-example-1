@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import GUIDELINE from '../constants';
 
@@ -12,10 +13,14 @@ const ProgressBar = styled.div`
   height: 100%;
 `
 
-const Progress = props => (
+const Progress = ({ progress }) => (
   <ProgressWrapper>
-    <ProgressBar style={{ width: props.progress + '%' }} ></ProgressBar>
+    <ProgressBar style={{ width: progress + '%' }} ></ProgressBar>
   </ProgressWrapper>
 );
+
+Progress.propTypes = {
+  progress: PropTypes.number.isRequired
+};
 
 export default Progress;

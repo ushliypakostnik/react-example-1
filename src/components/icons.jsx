@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import GUIDELINE from '../constants';
@@ -29,6 +30,10 @@ export const Close = ({ onClick }) => (
     </svg>
   </Icon>
 );
+
+Close.propTypes = {
+  onClick: PropTypes.func.isRequired
+};
 
 const Icons = {
   Close,
