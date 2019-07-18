@@ -1,5 +1,5 @@
-Create React App start with Stylebase on Scss.
-==============================================
+Create React App based example
+==============================
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
