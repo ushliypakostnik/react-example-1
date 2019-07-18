@@ -55,6 +55,12 @@ class App extends Component {
     };
   }
 
+  getOrientation() {
+    if (window.matchMedia("(orientation: portrait)").matches) {
+      return 'portrait';
+    } else return 'landscape';
+  }
+
   loop = () => {
     this.interval1 = setInterval(() => {
       if (this.state.progress === 100) {
@@ -77,13 +83,15 @@ class App extends Component {
 
   render() {
     const { progress, stop } = this.state;
+    const orientation = this.getOrientation();
+    console.log(orientation);
 
     return (
       <Fragment>
         <GlobalStyle />
         <PageWrapper>
           <ImageWrapper>
-            <Image />
+            <img src={ orientation ? portrait : landscape } />
           </ImageWrapper>
           <Progress progress={progress} />
           { stop && <Close onClick={this.start} /> }
