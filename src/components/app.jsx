@@ -64,7 +64,7 @@ class App extends Component {
       } else {
         this.setState({ progress: ++this.state.progress });
       }
-    }, 30);
+    }, GUIDELINE.animationSpeed);
   }
 
   componentDidMount() {
