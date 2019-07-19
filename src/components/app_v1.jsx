@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
-import ReactResizeDetector from 'react-resize-detector';
-
 import GUIDELINE from '../constants';
 
 import portrait from '../images/portrait.png';
@@ -26,14 +24,25 @@ const PageWrapper = styled.div`
 `
 const ImageWrapper = styled.div`
   display: flex;
-  height: 100%;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 `
 
-const Img = styled.img`
-  max-width: 100%;
-  max-height: 100%;
+const Image = styled.div`
+  @media only screen and (orientation: portrait) {
+    height: calc(100vh - ${GUIDELINE.progressHeight});
+    width: calc(33/49 * 100vmax);
+    background: url(${portrait}) 50% 50% no-repeat;
+    background-size: contain;
+  }
+
+  @media only screen and (orientation: landscape) {
+    width: calc(129/77 * calc(100vh - ${GUIDELINE.progressHeight}));
+    height: calc(100vh - ${GUIDELINE.progressHeight});
+    background: url(${landscape}) 50% 50% no-repeat;
+    background-size: contain;
+  }
 `
 
 class App extends Component {
@@ -43,7 +52,6 @@ class App extends Component {
     this.state = {
       progress: 0,
       stop: false,
-      orientation: null,
     };
   }
 
@@ -67,32 +75,21 @@ class App extends Component {
     this.loop();
   }
 
-  isPortrait() {
-    if (window.matchMedia("(orientation: portrait)").matches) {
-      return true;
-    } else return false;
-  }
-
   render() {
-    const { progress, stop, orientation } = this.state;
+    const { progress, stop } = this.state;
 
     return (
       <Fragment>
         <GlobalStyle />
-        <ReactResizeDetector handleHeight onResize={ this.onResize } />
         <PageWrapper>
           <ImageWrapper>
-            <Img src={ orientation ? portrait : landscape } alt="image-for-test" />
+            <Image />
           </ImageWrapper>
           <Progress progress={ progress } />
           { stop && <Close onClick={ this.start } /> }
         </PageWrapper>
       </Fragment>
     );
-  }
-
-  onResize = () => {
-    this.setState({ orientation: this.isPortrait() });
   }
 }
 
