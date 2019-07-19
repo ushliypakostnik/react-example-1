@@ -33,7 +33,7 @@ const ImageWrapper = styled.div`
 
 const Img = styled.img`
   max-width: 100%;
-  max-height: 100%;
+  max-height: calc(100vh - ${GUIDELINE.progressHeight});
 `
 
 class App extends Component {
