@@ -43,7 +43,7 @@ class App extends Component {
     this.state = {
       progress: 0,
       stop: false,
-      orientation: null,
+      orientation: this.isPortrait(),
     };
   }
 
