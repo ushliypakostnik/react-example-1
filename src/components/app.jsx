@@ -79,7 +79,7 @@ class App extends Component {
     return (
       <Fragment>
         <GlobalStyle />
-        <ReactResizeDetector handleHeight onResize={ this.onResize } />
+        <ReactResizeDetector handleHeight handleWidth onResize={ this.onResize } />
         <PageWrapper>
           <ImageWrapper>
             <Img src={ orientation ? portrait : landscape } alt="image-for-test" />
