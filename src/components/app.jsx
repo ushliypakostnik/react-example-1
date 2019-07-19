@@ -85,8 +85,8 @@ class App extends Component {
           <ImageWrapper>
             <Image />
           </ImageWrapper>
-          <Progress progress={progress} />
-          { stop && <Close onClick={this.start} /> }
+          <Progress progress={ progress } />
+          { stop && <Close onClick={ this.start } /> }
         </PageWrapper>
       </Fragment>
     );
